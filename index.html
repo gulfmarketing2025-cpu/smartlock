@@ -6,10 +6,10 @@
     <title>أمان سمارت | فني تركيب قفل ذكي في شمال الرياض – توريد وتركيب أقفال ذكية</title>
     <meta name="description" content="أمان سمارت: فني تركيب قفل ذكي في شمال الرياض. توريد وتركيب أقفال ذكية، فتح أبواب، تركيب دفاش وضبط وزنية. ضمان سنتين وخدمة 24/7.">
     
-    <!-- Fonts -->
+    <!-- Cairo Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,6 +18,7 @@
         :root {
             --primary: #0078D4;
             --primary-dark: #005A9E;
+            --primary-darker: #003D6B;
             --primary-light: #E6F2FF;
             --accent: #FF6B00;
             --accent-hover: #E65100;
@@ -25,72 +26,96 @@
             --text-gray: #555566;
             --white: #FFFFFF;
             --bg-light: #F8FAFC;
+            --topbar-bg: #0A2540;
             --shadow: 0 4px 20px rgba(0, 120, 212, 0.08);
             --shadow-hover: 0 12px 35px rgba(0, 120, 212, 0.15);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         html { scroll-behavior: smooth; }
         
         body {
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Cairo', sans-serif;
             background-color: var(--white);
             color: var(--text-dark);
             line-height: 1.8;
             overflow-x: hidden;
         }
 
-        /* --- Scroll Reveal Animation --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- Animated Button Shine Effect --- */
-        .btn-animated {
+        /* ===== Top Bar ===== */
+        .top-bar {
+            background: var(--topbar-bg);
+            color: var(--white);
+            padding: 0.6rem 2rem;
+            font-size: 0.9rem;
+            transition: all 0.4s ease;
             position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            z-index: 1001;
         }
-        .btn-animated::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.5s ease;
+        .top-bar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-        .btn-animated:hover::before {
-            left: 100%;
+        .top-bar-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
-        .btn-animated:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
+        .top-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: rgba(255,255,255,0.9);
         }
+        .top-bar-item i {
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+        .top-bar-areas {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.85rem;
+        }
+        .top-bar-areas span {
+            color: var(--white);
+            font-weight: 600;
+        }
+        .top-bar-phone {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        .top-bar-phone:hover { color: var(--accent); }
 
-        /* --- Navbar --- */
+        /* ===== Header / Navbar ===== */
         header {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(12px);
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
         }
+        header.scrolled {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
         .header-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0.8rem 2rem;
+            padding: 0.9rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -104,6 +129,7 @@
             gap: 0.5rem;
             text-decoration: none;
         }
+        .logo i { font-size: 1.8rem; }
         .nav-links {
             display: flex;
             list-style: none;
@@ -134,18 +160,18 @@
             background: var(--primary);
             color: var(--white) !important;
             padding: 0.6rem 1.5rem;
-            border-radius: 50px;
+            border-radius: 12px;
             font-weight: 700 !important;
+            transition: all 0.3s;
         }
         .header-cta::after { display: none !important; }
         .header-cta:hover { background: var(--primary-dark); transform: translateY(-2px); }
         .menu-toggle { display: none; font-size: 1.8rem; color: var(--primary); cursor: pointer; }
 
-        /* --- 1. Hero Section with Animated Background --- */
+        /* ===== Hero Section - Premium ===== */
         .hero {
-            margin-top: 75px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #003D6B 0%, #0078D4 50%, #005A9E 100%);
+            padding: 5rem 2rem;
             position: relative;
             overflow: hidden;
             color: var(--white);
@@ -154,59 +180,184 @@
             align-items: center;
         }
         /* Animated Background Shapes */
-        .hero::before, .hero::after {
+        .hero::before {
             content: '';
             position: absolute;
+            top: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
+            animation: floatShape 10s infinite ease-in-out;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,107,0,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatShape 12s infinite ease-in-out reverse;
+        }
+        .hero-shape-1, .hero-shape-2, .hero-shape-3 {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-shape-1 {
+            width: 200px; height: 200px;
+            top: 20%; right: 10%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent);
             animation: floatShape 8s infinite ease-in-out;
         }
-        .hero::before { width: 400px; height: 400px; top: -100px; left: -100px; animation-delay: 0s; }
-        .hero::after { width: 300px; height: 300px; bottom: -50px; right: -50px; animation-delay: 2s; }
-        
+        .hero-shape-2 {
+            width: 150px; height: 150px;
+            bottom: 15%; left: 15%;
+            background: linear-gradient(135deg, rgba(255,107,0,0.1), transparent);
+            animation: floatShape 9s infinite ease-in-out 1s;
+        }
+        .hero-shape-3 {
+            width: 100px; height: 100px;
+            top: 50%; left: 40%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.06), transparent);
+            animation: floatShape 7s infinite ease-in-out 2s;
+        }
+        .hero-grid-pattern {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
         @keyframes floatShape {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -30px) scale(1.1); }
+            33% { transform: translate(30px, -40px) scale(1.1); }
+            66% { transform: translate(-20px, 30px) scale(0.95); }
         }
 
         .hero-container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.1fr 1fr;
             gap: 4rem;
             align-items: center;
             position: relative;
             z-index: 2;
         }
-        .hero-content h1 { font-size: 3rem; margin-bottom: 1.2rem; line-height: 1.3; font-weight: 900; }
-        .hero-content p { font-size: 1.25rem; margin-bottom: 2.5rem; opacity: 0.95; max-width: 550px; }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .hero-badge i { color: var(--accent); }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.3;
+            font-weight: 900;
+        }
+        .hero-content h1 .highlight {
+            color: var(--accent);
+            display: inline-block;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 550px;
+            line-height: 1.9;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
         .hero-image img {
             width: 100%;
             border-radius: 20px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
-            border: 4px solid rgba(255,255,255,0.2);
-            animation: floatImage 4s infinite ease-in-out;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.4);
+            border: 4px solid rgba(255,255,255,0.15);
+            animation: floatImage 5s infinite ease-in-out;
         }
         @keyframes floatImage {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-20px); }
         }
+
+        /* ===== Buttons - Rounded but not pill ===== */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
-            padding: 1rem 2.2rem;
-            border-radius: 50px;
+            padding: 1rem 2rem;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 800;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .btn-accent { background: var(--accent); color: var(--white); }
-        .btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); margin-right: 1rem; }
-        .btn-outline:hover { background: var(--white); color: var(--primary); transform: translateY(-3px); }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn:hover::before { left: 100%; }
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.35);
+        }
+        .btn-accent:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.5);
+        }
+        .btn-outline {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.4);
+            backdrop-filter: blur(10px);
+        }
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+            border-color: var(--white);
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 6px 20px rgba(0, 120, 212, 0.3);
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 120, 212, 0.4);
+        }
 
-        /* --- Floating Buttons --- */
+        /* ===== Floating Buttons ===== */
         .floating-buttons {
             position: fixed;
             bottom: 30px;
@@ -219,7 +370,7 @@
         .float-btn {
             width: 60px;
             height: 60px;
-            border-radius: 50%;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -232,7 +383,7 @@
         }
         .float-btn.whatsapp { background: #25D366; animation: pulseGreen 2s infinite; }
         .float-btn.call { background: var(--primary); }
-        .float-btn:hover { transform: scale(1.1) translateY(-5px); }
+        .float-btn:hover { transform: scale(1.1) translateY(-5px); border-radius: 20px; }
         .float-btn span {
             position: absolute;
             right: 70px;
@@ -253,12 +404,34 @@
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
-        /* --- Sections General --- */
+        /* ===== Scroll Reveal ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ===== Sections General ===== */
         section { padding: 5rem 2rem; }
         .container { max-width: 1200px; margin: 0 auto; }
         .section-title { text-align: center; margin-bottom: 3.5rem; }
-        .section-title h2 { font-size: 2.4rem; color: var(--primary); margin-bottom: 0.5rem; font-weight: 900; position: relative; display: inline-block; }
-        .section-title h2::after { content: ''; display: block; width: 70px; height: 4px; background: var(--accent); margin: 0.8rem auto 0; border-radius: 2px; }
+        .section-title h2 {
+            font-size: 2.4rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+            display: inline-block;
+        }
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: var(--accent);
+            margin: 0.8rem auto 0;
+            border-radius: 2px;
+        }
         .section-title p { color: var(--text-gray); font-size: 1.15rem; max-width: 700px; margin: 0 auto; }
 
         .bg-pattern {
@@ -268,61 +441,61 @@
         }
         .bg-gradient-soft { background: linear-gradient(135deg, var(--primary-light) 0%, var(--white) 100%); }
 
-        /* --- 2. About Section --- */
+        /* ===== About ===== */
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
         .about-image img { width: 100%; border-radius: 20px; box-shadow: var(--shadow-hover); }
         .about-content h3 { font-size: 2rem; color: var(--primary); margin-bottom: 1rem; }
         .about-content p { margin-bottom: 1.2rem; color: var(--text-gray); }
-        .stats-row { display: flex; gap: 2rem; margin-top: 2rem; }
-        .stat-box { text-align: center; background: var(--white); padding: 1.5rem; border-radius: 15px; box-shadow: var(--shadow); flex: 1; }
+        .stats-row { display: flex; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+        .stat-box { text-align: center; background: var(--white); padding: 1.5rem; border-radius: 15px; box-shadow: var(--shadow); flex: 1; min-width: 120px; }
         .stat-box h4 { font-size: 2rem; color: var(--accent); font-weight: 900; }
         .stat-box span { font-size: 0.9rem; color: var(--text-gray); font-weight: 600; }
 
-        /* --- 3. Why Choose Us --- */
+        /* ===== Features ===== */
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .feature-card {
             background: var(--white); padding: 2.5rem 2rem; border-radius: 15px; text-align: center;
             box-shadow: var(--shadow); transition: all 0.4s ease; border-bottom: 4px solid transparent;
         }
         .feature-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); border-bottom-color: var(--accent); }
-        .feature-icon { width: 70px; height: 70px; background: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; color: var(--primary); transition: all 0.3s; }
+        .feature-icon { width: 70px; height: 70px; background: var(--primary-light); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; color: var(--primary); transition: all 0.3s; }
         .feature-card:hover .feature-icon { background: var(--primary); color: var(--white); transform: rotateY(180deg); }
         .feature-card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; }
 
-        /* --- 4. Services (8 Services) --- */
+        /* ===== Services ===== */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
         .service-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); transition: all 0.4s ease; }
         .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
         .service-img { height: 200px; overflow: hidden; position: relative; }
         .service-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
         .service-card:hover .service-img img { transform: scale(1.1); }
-        .service-badge { position: absolute; top: 15px; right: 15px; background: var(--accent); color: var(--white); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
+        .service-badge { position: absolute; top: 15px; right: 15px; background: var(--accent); color: var(--white); padding: 0.3rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 700; }
         .service-content { padding: 1.5rem; }
         .service-content h3 { color: var(--primary); margin-bottom: 0.8rem; font-size: 1.2rem; }
         .service-content p { font-size: 0.95rem; color: var(--text-gray); margin-bottom: 1rem; }
         .service-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .service-tags span { background: var(--primary-light); color: var(--primary-dark); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .service-tags span { background: var(--primary-light); color: var(--primary-dark); padding: 0.3rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600; }
 
-        /* --- 5. Brands --- */
+        /* ===== Brands ===== */
         .brands-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; align-items: center; opacity: 0.7; }
         .brand-item { font-size: 1.5rem; font-weight: 800; color: var(--text-gray); display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s; }
         .brand-item:hover { color: var(--primary); transform: scale(1.1); opacity: 1; }
 
-        /* --- 6. Steps --- */
-        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; position: relative; }
+        /* ===== Steps ===== */
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
         .step-card { background: var(--white); padding: 2.5rem 2rem; border-radius: 15px; text-align: center; box-shadow: var(--shadow); position: relative; transition: all 0.3s ease; }
         .step-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
-        .step-number { position: absolute; top: -20px; right: 50%; transform: translateX(50%); width: 45px; height: 45px; background: var(--accent); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; box-shadow: 0 4px 10px rgba(255, 107, 0, 0.3); }
+        .step-number { position: absolute; top: -20px; right: 50%; transform: translateX(50%); width: 45px; height: 45px; background: var(--accent); color: var(--white); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; box-shadow: 0 4px 10px rgba(255, 107, 0, 0.3); }
         .step-icon { font-size: 3rem; color: var(--primary); margin-bottom: 1.5rem; margin-top: 0.5rem; }
 
-        /* --- 7. Coverage Areas --- */
+        /* ===== Areas ===== */
         .areas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
         .area-card { background: var(--white); padding: 1.5rem; border-radius: 12px; text-align: center; box-shadow: var(--shadow); transition: all 0.3s ease; border: 1px solid transparent; cursor: default; }
         .area-card:hover { border-color: var(--primary); transform: translateY(-5px); background: var(--primary-light); }
         .area-card i { color: var(--accent); font-size: 1.5rem; margin-bottom: 0.5rem; }
         .area-card h4 { color: var(--text-dark); font-size: 1.1rem; }
 
-        /* --- 8. Gallery --- */
+        /* ===== Gallery ===== */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
         .gallery-item { border-radius: 12px; overflow: hidden; height: 250px; position: relative; box-shadow: var(--shadow); }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
@@ -330,17 +503,17 @@
         .gallery-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,120,212,0.9), transparent); padding: 1.5rem 1rem 1rem; color: var(--white); transform: translateY(100%); transition: transform 0.4s ease; }
         .gallery-item:hover .gallery-overlay { transform: translateY(0); }
 
-        /* --- 9. Testimonials --- */
+        /* ===== Testimonials ===== */
         .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .testimonial-card { background: var(--white); padding: 2rem; border-radius: 15px; box-shadow: var(--shadow); border-top: 4px solid var(--primary); transition: all 0.3s; }
         .testimonial-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
         .stars { color: #FFC107; margin-bottom: 1rem; }
         .testimonial-text { font-style: italic; color: var(--text-gray); margin-bottom: 1.5rem; line-height: 1.8; }
         .client-info { display: flex; align-items: center; gap: 1rem; }
-        .client-avatar { width: 50px; height: 50px; background: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: 800; font-size: 1.2rem; }
+        .client-avatar { width: 50px; height: 50px; background: var(--primary-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: 800; font-size: 1.2rem; }
 
-        /* --- 10. FAQ --- */
-        .faq-item { background: var(--white); border-radius: 10px; margin-bottom: 1rem; box-shadow: var(--shadow); overflow: hidden; }
+        /* ===== FAQ ===== */
+        .faq-item { background: var(--white); border-radius: 12px; margin-bottom: 1rem; box-shadow: var(--shadow); overflow: hidden; }
         .faq-question { padding: 1.2rem 1.5rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 700; color: var(--text-dark); transition: background 0.3s; }
         .faq-question:hover { background: var(--primary-light); color: var(--primary); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 1.5rem; color: var(--text-gray); }
@@ -348,40 +521,42 @@
         .faq-icon { transition: transform 0.3s; }
         .faq-item.active .faq-icon { transform: rotate(180deg); color: var(--primary); }
 
-        /* --- 11. Contact --- */
+        /* ===== Contact ===== */
         .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-hover); }
         .contact-info { background: var(--primary); color: var(--white); padding: 3.5rem; }
         .contact-info h3 { font-size: 2rem; margin-bottom: 1.5rem; }
         .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
-        .contact-detail i { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .contact-detail i { width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
         .contact-form { background: var(--white); padding: 3.5rem; }
         .form-group { margin-bottom: 1.2rem; }
         .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 700; color: var(--text-dark); }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.9rem; border: 2px solid #e2e8f0; border-radius: 10px; font-family: 'Tajawal', sans-serif; transition: all 0.3s; font-size: 1rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.9rem; border: 2px solid #e2e8f0; border-radius: 10px; font-family: 'Cairo', sans-serif; transition: all 0.3s; font-size: 1rem; }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
-        .submit-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--white); border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: all 0.3s; }
+        .submit-btn { width: 100%; padding: 1rem; background: var(--accent); color: var(--white); border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: all 0.3s; font-family: 'Cairo', sans-serif; }
         .submit-btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
 
-        /* --- Footer --- */
+        /* ===== Footer ===== */
         footer { background: #0F172A; color: #CBD5E1; padding: 4rem 2rem 1.5rem; }
         .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
         .footer-col h4 { color: var(--white); font-size: 1.3rem; margin-bottom: 1.5rem; position: relative; font-weight: 800; }
-        .footer-col h4::after { content: ''; position: absolute; bottom: -8px; right: 0; width: 40px; height: 3px; background: var(--accent); }
+        .footer-col h4::after { content: ''; position: absolute; bottom: -8px; right: 0; width: 40px; height: 3px; background: var(--accent); border-radius: 2px; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 0.8rem; }
         .footer-col a { color: #CBD5E1; text-decoration: none; transition: all 0.3s; }
         .footer-col a:hover { color: var(--accent); padding-right: 5px; }
         .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
-        .gulf-marketing { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--primary), #005A9E); padding: 0.6rem 1.5rem; border-radius: 50px; color: var(--white); text-decoration: none; font-weight: 700; margin-top: 1rem; transition: all 0.3s; }
+        .gulf-marketing { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--primary), #005A9E); padding: 0.6rem 1.5rem; border-radius: 12px; color: var(--white); text-decoration: none; font-weight: 700; margin-top: 1rem; transition: all 0.3s; }
         .gulf-marketing:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 120, 212, 0.4); }
 
-        /* --- Responsive --- */
+        /* ===== Responsive ===== */
         @media (max-width: 968px) {
+            .top-bar-container { justify-content: center; text-align: center; }
+            .top-bar-areas { display: none; }
             .hero-container, .about-grid, .contact-wrapper { grid-template-columns: 1fr; }
             .hero-content { text-align: center; }
             .hero-content h1 { font-size: 2.2rem; }
             .hero-content p { margin: 0 auto 2rem; }
-            .hero-buttons { justify-content: center; flex-wrap: wrap; }
+            .hero-buttons { justify-content: center; }
             .menu-toggle { display: block; }
             .nav-links {
                 position: fixed; top: 75px; right: -100%; width: 85%; height: calc(100vh - 75px);
@@ -390,13 +565,44 @@
             }
             .nav-links.active { right: 0; }
             .stats-row { flex-wrap: wrap; }
+            .btn { padding: 0.9rem 1.5rem; font-size: 1rem; }
+        }
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 1.8rem; }
+            .hero-buttons { flex-direction: column; width: 100%; }
+            .hero-buttons .btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header & Navbar -->
-    <header>
+    <!-- Top Bar -->
+    <div class="top-bar" id="topBar">
+        <div class="top-bar-container">
+            <div class="top-bar-info">
+                <div class="top-bar-item">
+                    <i class="fas fa-clock"></i>
+                    <span>خدمة 24/7 – نفس اليوم</span>
+                </div>
+                <div class="top-bar-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>شمال الرياض</span>
+                </div>
+            </div>
+            <div class="top-bar-areas">
+                <i class="fas fa-location-dot" style="color: var(--accent);"></i>
+                <span>نغطي:</span>
+                <span>الملقا</span> | <span>العقيق</span> | <span>الياسمين</span> | <span>النرجس</span> | <span>الغدير</span>
+            </div>
+            <a href="tel:0542423029" class="top-bar-phone">
+                <i class="fas fa-phone-alt"></i>
+                <span>0542423029</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header id="mainHeader">
         <div class="header-container">
             <a href="#" class="logo"><i class="fas fa-shield-alt"></i> أمان سمارت</a>
             <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
@@ -406,23 +612,34 @@
                 <li><a href="#steps">خطوات العمل</a></li>
                 <li><a href="#areas">التغطية</a></li>
                 <li><a href="#faq">الأسئلة</a></li>
-                <li><a href="#contact" class="header-cta btn-animated">اطلب عرض سعر</a></li>
+                <li><a href="#contact" class="header-cta">اطلب عرض سعر</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- 1. Hero Section -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-shape-1"></div>
+        <div class="hero-shape-2"></div>
+        <div class="hero-shape-3"></div>
+        <div class="hero-grid-pattern"></div>
         <div class="hero-container">
             <div class="hero-content reveal">
-                <h1>فني تركيب قفل ذكي<br>في شمال الرياض</h1>
-                <p>توريد وتركيب أقفال ذكية للفلل والشقق والمكاتب. فتح أبواب مغلقة، تركيب دفاش، وضبط وزنية أبواب حديد وخشب. خدمة احترافية في نفس اليوم بضمان سنتين كاملتين.</p>
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    <span>الأول في تركيب الأقفال الذكية بشمال الرياض</span>
+                </div>
+                <h1>
+                    فني تركيب قفل ذكي<br>
+                    <span class="highlight">في شمال الرياض</span>
+                </h1>
+                <p>توريد وتركيب اقفال ذكية للفلل والشقق والمكاتب. فتح ابواب مغلقة، تركيب دفاش، ضبط وزنية ابواب حديد وخشب. خدمة احترافية في نفس اليوم بضمان سنتين كاملتين.</p>
                 <div class="hero-buttons">
-                    <a href="https://wa.me/966542423029?text=مرحباً، أرغب في عرض سعر لتركيب قفل ذكي" class="btn btn-accent btn-animated">
-                        <i class="fab fa-whatsapp"></i> واتساب الآن
+                    <a href="https://wa.me/966542423029?text=مرحباً، أرغب في عرض سعر لتركيب قفل ذكي" class="btn btn-accent">
+                        <i class="fab fa-whatsapp"></i> اطلب عرض سعر مجاني
                     </a>
-                    <a href="tel:0542423029" class="btn btn-outline btn-animated">
-                        <i class="fas fa-phone-alt"></i> 0542423029
+                    <a href="tel:0542423029" class="btn btn-outline">
+                        <i class="fas fa-phone-alt"></i> اتصل: 0542423029
                     </a>
                 </div>
             </div>
@@ -442,7 +659,7 @@
         </a>
     </div>
 
-    <!-- 2. About Us -->
+    <!-- About -->
     <section id="about" class="bg-gradient-soft">
         <div class="container">
             <div class="section-title reveal"><h2>من نحن</h2><p>خبراء الأقفال الذكية والأمن المنزلي في شمال الرياض</p></div>
@@ -451,7 +668,7 @@
                 <div class="about-content reveal">
                     <h3>أمان سمارت لتقنية الأقفال</h3>
                     <p>أمان سمارت هي شركة متخصصة في توريد وتركيب الأقفال الذكية والإلكترونية في شمال الرياض وأحيائها. تأسسنا قبل أكثر من 8 سنوات بهدف توفير حلول أمنية ذكية وموثوقة للأفراد والشركات، مع الالتزام بأعلى معايير الجودة والاحترافية.</p>
-                    <p>يضم فريقنا فنيين معتمدين ومدربين على أحدث أنظمة الأقفال الذكية من كبرى الماركات العالمية كـ Samsung وYale وPhilips وHoneywell، مما يضمن لك تركيبًا دقيقًا وخدمة ما بعد البيع الكاملة.</p>
+                    <p>يضم فريقنا فنيين معتمدين ومدربين على أحدث أنظمة الأقفال الذكية من كبرى الماركات العالمية كـ Samsung وYale وPhilips وHoneywell.</p>
                     <div class="stats-row">
                         <div class="stat-box"><h4>+500</h4><span>قفل مُركّب</span></div>
                         <div class="stat-box"><h4>+8</h4><span>سنوات خبرة</span></div>
@@ -462,60 +679,34 @@
         </div>
     </section>
 
-    <!-- 3. Why Choose Us -->
+    <!-- Why Choose Us -->
     <section id="why-us">
         <div class="container">
-            <div class="section-title reveal"><h2>لماذا تختار أمان سمارت؟</h2><p>+500 عميل في شمال الرياض اختاروا أمان سمارت — إليك أبرز ما يميزنا</p></div>
+            <div class="section-title reveal"><h2>لماذا تختار أمان سمارت؟</h2><p>+500 عميل في شمال الرياض اختاروا أمان سمارت</p></div>
             <div class="features-grid">
-                <div class="feature-card reveal">
-                    <div class="feature-icon"><i class="fas fa-certificate"></i></div>
-                    <h3>فني معتمد ومرخص</h3>
-                    <p>جميع فنيينا حاصلون على شهادات معتمدة في تركيب الأقفال الذكية مع خبرة تزيد على 8 سنوات.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3>ضمان سنتان كاملتان</h3>
-                    <p>نضمن جميع أعمال التركيب والمنتجات لمدة سنتين، أي عطل يُصلح بدون أي رسوم إضافية.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                    <h3>خدمة في نفس اليوم</h3>
-                    <p>نلتزم بالوصول إليك في أسرع وقت ممكن، معظم طلباتنا تُنجز في نفس يوم الاتصال.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
-                    <h3>منتجات أصلية 100%</h3>
-                    <p>نوفر فقط الأقفال الذكية الأصلية من ماركات عالمية بفاتورة ضمان رسمية لا تنتهي صلاحيتها.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                    <h3>أسعار شفافة</h3>
-                    <p>نقدم عرض سعر نهائي ومجاني قبل البدء بأي عمل، لا مفاجآت ولا رسوم خفية بعد التركيب.</p>
-                </div>
-                <div class="feature-card reveal">
-                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
-                    <h3>دعم ما بعد التركيب</h3>
-                    <p>فريق دعم متاح على مدار الساعة للمساعدة في البرمجة والإعدادات حتى بعد التسليم.</p>
-                </div>
+                <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-certificate"></i></div><h3>فني معتمد ومرخص</h3><p>جميع فنيينا حاصلون على شهادات معتمدة في تركيب الأقفال الذكية مع خبرة تزيد على 8 سنوات.</p></div>
+                <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>ضمان سنتان كاملتان</h3><p>نضمن جميع أعمال التركيب والمنتجات لمدة سنتين — أي عطل يُصلح بدون أي رسوم إضافية.</p></div>
+                <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-bolt"></i></div><h3>خدمة في نفس اليوم</h3><p>نلتزم بالوصول إليك في أسرع وقت ممكن، معظم طلباتنا تُنجز في نفس يوم الاتصال.</p></div>
+                <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-check-circle"></i></div><h3>منتجات أصلية 100%</h3><p>نوفر فقط الأقفال الذكية الأصلية من ماركات عالمية بفاتورة ضمان رسمية.</p></div>
+                <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-file-invoice-dollar"></i></div><h3>أسعار شفافة</h3><p>نقدم عرض سعر نهائي ومجاني قبل البدء بأي عمل — لا مفاجآت ولا رسوم خفية.</p></div>
+                <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-headset"></i></div><h3>دعم ما بعد التركيب</h3><p>فريق دعم متاح على مدار الساعة للمساعدة في البرمجة والإعدادات حتى بعد التسليم.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- 4. Services (8 Services) -->
+    <!-- Services -->
     <section id="services" class="bg-pattern">
         <div class="container">
-            <div class="section-title reveal"><h2>خدماتنا المتكاملة</h2><p>نقدم حلولاً أمنية شاملة لتركيب أقفال ذكية بشمال الرياض — من التوريد والتركيب إلى الصيانة والطوارئ</p></div>
+            <div class="section-title reveal"><h2>خدماتنا المتكاملة</h2><p>نقدم حلولاً أمنية شاملة لتركيب أقفال ذكية بشمال الرياض</p></div>
             <div class="services-grid">
-                <!-- Service 1 -->
                 <div class="service-card reveal">
                     <div class="service-img"><img src="3.jpg" alt="تركيب أقفال ذكية"><span class="service-badge">الأكثر طلبًا</span></div>
                     <div class="service-content">
                         <h3>تركيب أقفال ذكية للأبواب</h3>
-                        <p>نركب أحدث الأقفال الذكية لأبواب الفلل والشقق والمكاتب باستخدام أفضل الماركات العالمية المعتمدة.</p>
+                        <p>نركب أحدث الأقفال الذكية لأبواب الفلل والشقق والمكاتب بأفضل الماركات العالمية.</p>
                         <div class="service-tags"><span>بصمة</span><span>بلوتوث</span><span>Wi-Fi</span><span>رمز سري</span></div>
                     </div>
                 </div>
-                <!-- Service 2 -->
                 <div class="service-card reveal">
                     <div class="service-img"><img src="4.jpg" alt="توريد أقفال"><span class="service-badge">توريد أصلي</span></div>
                     <div class="service-content">
@@ -524,57 +715,51 @@
                         <div class="service-tags"><span>Samsung</span><span>Yale</span><span>Philips</span><span>Honeywell</span></div>
                     </div>
                 </div>
-                <!-- Service 3 -->
                 <div class="service-card reveal">
                     <div class="service-img"><img src="5.jpg" alt="صيانة الأقفال"></div>
                     <div class="service-content">
                         <h3>تصليح وصيانة الأقفال</h3>
-                        <p>خدمة تصليح وتبديل اقفال الابواب وصيانتها الدورية للأقفال العادية والذكية بسرعة واحترافية.</p>
+                        <p>خدمة تصليح وتبديل اقفال الابواب وصيانتها الدورية بسرعة واحترافية.</p>
                         <div class="service-tags"><span>قطع غيار أصلية</span><span>برمجة</span><span>صيانة دورية</span></div>
                     </div>
                 </div>
-                <!-- Service 4 -->
                 <div class="service-card reveal">
                     <div class="service-img"><img src="6.jpg" alt="أقفال الشركات"></div>
                     <div class="service-content">
                         <h3>أقفال الشركات والمكاتب</h3>
-                        <p>حلول أمنية متكاملة تشمل أنظمة التحكم في الدخول وأقفال متعددة المستخدمين مع الإدارة عن بُعد.</p>
+                        <p>حلول أمنية متكاملة تشمل أنظمة التحكم في الدخول والإدارة عن بُعد.</p>
                         <div class="service-tags"><span>تحكم بالدخول</span><span>إدارة عن بُعد</span><span>سجل دخول</span></div>
                     </div>
                 </div>
-                <!-- Service 5 -->
                 <div class="service-card reveal">
                     <div class="service-img"><img src="7.jpg" alt="إنتركم ذكي"></div>
                     <div class="service-content">
                         <h3>تركيب إنتركم ذكي</h3>
-                        <p>نركّب أحدث أنظمة الإنتركم الذكي المرئي المتصل بهاتفك لتحكم كامل في بوابة منزلك من أي مكان.</p>
+                        <p>أحدث أنظمة الإنتركم الذكي المرئي المتصل بهاتفك لتحكم كامل في بوابة منزلك.</p>
                         <div class="service-tags"><span>إنتركم مرئي</span><span>اتصال بالهاتف</span><span>كاميرا HD</span></div>
                     </div>
                 </div>
-                <!-- Service 6 -->
                 <div class="service-card reveal">
                     <div class="service-img"><img src="8.jpg" alt="طوارئ 24/7"><span class="service-badge">24/7</span></div>
                     <div class="service-content">
                         <h3>طوارئ وفتح الأقفال</h3>
-                        <p>نصلك في أسرع وقت لفتح الأقفال المعطلة أو المنسية بشمال الرياض على مدار الساعة دون إتلاف الباب.</p>
-                        <div class="service-tags"><span>وصول خلال ساعة</span><span>فتح بدون إتلاف</span><span>خدمة 24/7</span></div>
+                        <p>نصلك في أسرع وقت لفتح الأقفال المعطلة أو المنسية على مدار الساعة.</p>
+                        <div class="service-tags"><span>خدمة 24/7</span><span>وصول سريع</span><span>بدون إتلاف</span></div>
                     </div>
                 </div>
-                <!-- Service 7 -->
                 <div class="service-card reveal">
                     <div class="service-img"><img src="1.jpg" alt="فتح أبواب مغلقة"></div>
                     <div class="service-content">
                         <h3>فتح أبواب مغلقة</h3>
-                        <p>خدمة احترافية لفتح الأبواب المغلقة سواءً أقفال عادية أو ذكية، بدون إتلاف الباب أو القفل.</p>
+                        <p>خدمة احترافية لفتح الأبواب المغلقة بدون إتلاف الباب أو القفل.</p>
                         <div class="service-tags"><span>فتح أقفال معطلة</span><span>بدون إتلاف</span><span>خدمة طارئة</span></div>
                     </div>
                 </div>
-                <!-- Service 8 -->
                 <div class="service-card reveal">
                     <div class="service-img"><img src="2.jpg" alt="تركيب دفاش"></div>
                     <div class="service-content">
                         <h3>تركيب دفاش وضبط وزنية</h3>
-                        <p>نقوم بتركيب جميع أنواع الدفاش وضبط الوزنية للأبواب الحديدية والخشبية بدقة عالية لضمان إغلاق مثالي.</p>
+                        <p>نقوم بتركيب جميع أنواع الدفاش وضبط الوزنية للأبواب الحديدية والخشبية.</p>
                         <div class="service-tags"><span>دفاش خارجي/داخلي</span><span>ضبط وزنية حديد</span><span>معالجة أبواب معلقة</span></div>
                     </div>
                 </div>
@@ -582,7 +767,7 @@
         </div>
     </section>
 
-    <!-- 5. Brands -->
+    <!-- Brands -->
     <section id="brands">
         <div class="container">
             <div class="section-title reveal"><h2>الماركات العالمية</h2><p>التي نوفرها ونثق بها ونقدم لها ضماناً رسمياً</p></div>
@@ -598,7 +783,7 @@
         </div>
     </section>
 
-    <!-- 6. Steps -->
+    <!-- Steps -->
     <section id="steps" class="bg-gradient-soft">
         <div class="container">
             <div class="section-title reveal"><h2>كيف نعمل؟</h2><p>3 خطوات بسيطة تفصلك عن تأمين منزلك بأحدث التقنيات</p></div>
@@ -607,25 +792,25 @@
                     <div class="step-number">1</div>
                     <div class="step-icon"><i class="fas fa-phone-volume"></i></div>
                     <h3>تواصل معنا</h3>
-                    <p>اتصل بنا أو راسلنا على الواتساب لتحديد نوع الخدمة والحي الذي تقيم فيه بشمال الرياض.</p>
+                    <p>اتصل بنا أو راسلنا على الواتساب لتحديد نوع الخدمة والحي الذي تقيم فيه.</p>
                 </div>
                 <div class="step-card reveal">
                     <div class="step-number">2</div>
                     <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
                     <h3>زيارة وتقييم مجاني</h3>
-                    <p>يصلك فني معتمد خلال ساعات لتقييم الباب، وعرض الخيارات المناسبة مع سعر نهائي شفاف.</p>
+                    <p>يصلك فني معتمد خلال ساعات لتقييم الباب وعرض الخيارات المناسبة مع سعر نهائي.</p>
                 </div>
                 <div class="step-card reveal">
                     <div class="step-number">3</div>
                     <div class="step-icon"><i class="fas fa-tools"></i></div>
                     <h3>تركيب وضمان</h3>
-                    <p>نقوم بالتركيب الاحترافي، شرح طريقة الاستخدام، وتسليمك كرت ضمان سنتين فوراً.</p>
+                    <p>نقوم بالتركيب الاحترافي وشرح طريقة الاستخدام، وتسليمك كرت ضمان سنتين فوراً.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 7. Coverage Areas -->
+    <!-- Areas -->
     <section id="areas" class="bg-pattern">
         <div class="container">
             <div class="section-title reveal"><h2>مناطق التغطية</h2><p>يصلك فريق أمان سمارت في جميع أحياء شمال الرياض خلال ساعات</p></div>
@@ -645,12 +830,12 @@
             </div>
             <div style="text-align: center; margin-top: 2rem;" class="reveal">
                 <p style="color: var(--text-gray); margin-bottom: 1rem;">لا يوجد حيك في القائمة؟ تواصل معنا وسنصلك أينما كنت في شمال الرياض</p>
-                <a href="https://wa.me/966542423029" class="btn btn-accent btn-animated"><i class="fab fa-whatsapp"></i> اطلب الخدمة الآن</a>
+                <a href="https://wa.me/966542423029" class="btn btn-accent"><i class="fab fa-whatsapp"></i> اطلب الخدمة الآن</a>
             </div>
         </div>
     </section>
 
-    <!-- 8. Gallery -->
+    <!-- Gallery -->
     <section id="gallery">
         <div class="container">
             <div class="section-title reveal"><h2>معرض أعمالنا</h2><p>صور حقيقية من تركيباتنا الأخيرة في أحياء شمال الرياض</p></div>
@@ -667,58 +852,58 @@
         </div>
     </section>
 
-    <!-- 9. Testimonials -->
+    <!-- Testimonials -->
     <section id="testimonials" class="bg-gradient-soft">
         <div class="container">
             <div class="section-title reveal"><h2>آراء عملائنا</h2><p>+500 عميل راضٍ في شمال الرياض يثقون بخدماتنا</p></div>
             <div class="testimonials-grid">
                 <div class="testimonial-card reveal">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testimonial-text">"خدمة ممتازة وسريعة جداً. الفني وصل لحي الملقا في نفس اليوم، والتركيب كان احترافي بدون أي خدش في الباب. أنصح بهم بشدة."</p>
+                    <p class="testimonial-text">"خدمة ممتازة وسريعة جداً. الفني وصل لحي الملقا في نفس اليوم، والتركيب كان احترافي بدون أي خدش في الباب."</p>
                     <div class="client-info"><div class="client-avatar">أ</div><div><strong>أبو محمد</strong><div style="font-size: 0.85rem; color: var(--text-gray);">حي الملقا</div></div></div>
                 </div>
                 <div class="testimonial-card reveal">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="testimonial-text">"أسعارهم شفافة ومنافسة جداً مقارنة بالسوق. القفل الأصلي مع ضمان سنتين، والتعامل راقي جداً من أول مكالمة."</p>
+                    <p class="testimonial-text">"أسعارهم شفافة ومنافسة جداً مقارنة بالسوق. القفل الأصلي مع ضمان سنتين، والتعامل راقي جداً."</p>
                     <div class="client-info"><div class="client-avatar">خ</div><div><strong>خالد العتيبي</strong><div style="font-size: 0.85rem; color: var(--text-gray);">حي الياسمين</div></div></div>
                 </div>
                 <div class="testimonial-card reveal">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                    <p class="testimonial-text">"ركبت إنتركم ذكي وقفل بصمة للفيلا في حي النرجس. الشغل نظيف ومرتب، وشرحوا لي كل شيء في التطبيق بشكل ممتاز."</p>
+                    <p class="testimonial-text">"ركبت إنتركم ذكي وقفل بصمة للفيلا في حي النرجس. الشغل نظيف ومرتب، وشرحوا لي كل شيء في التطبيق."</p>
                     <div class="client-info"><div class="client-avatar">م</div><div><strong>م. سعد الدوسري</strong><div style="font-size: 0.85rem; color: var(--text-gray);">حي النرجس</div></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 10. FAQ -->
+    <!-- FAQ -->
     <section id="faq">
         <div class="container" style="max-width: 800px;">
-            <div class="section-title reveal"><h2>الأسئلة الشائعة</h2><p>إجابات شفافة على أكثر الأسئلة شيوعاً حول تركيب الأقفال الذكية</p></div>
+            <div class="section-title reveal"><h2>الأسئلة الشائعة</h2><p>إجابات شفافة على أكثر الأسئلة شيوعاً</p></div>
             <div class="faq-item reveal">
                 <div class="faq-question">ما تكلفة تركيب قفل ذكي في شمال الرياض؟ <i class="fas fa-chevron-down faq-icon"></i></div>
                 <div class="faq-answer"><p>تتراوح تكلفة تركيب قفل ذكي في الرياض بين 200 و800 ريال حسب نوع القفل والماركة. نقدم عرض سعر مجاني ونهائي قبل البدء دون أي التزام.</p></div>
             </div>
             <div class="faq-item reveal">
                 <div class="faq-question">كم يستغرق تركيب القفل الذكي؟ <i class="fas fa-chevron-down faq-icon"></i></div>
-                <div class="faq-answer"><p>يستغرق تركيب القفل الذكي في الغالب من 30 دقيقة إلى ساعتين حسب نوع الباب والقفل والتمديدات المطلوبة. نقدم خدمة في نفس اليوم.</p></div>
+                <div class="faq-answer"><p>يستغرق التركيب في الغالب من 30 دقيقة إلى ساعتين حسب نوع الباب والقفل. نقدم خدمة في نفس اليوم.</p></div>
             </div>
             <div class="faq-item reveal">
                 <div class="faq-question">ما أفضل أنواع الأقفال الذكية لأبواب الفلل؟ <i class="fas fa-chevron-down faq-icon"></i></div>
-                <div class="faq-answer"><p>من أفضل الأقفال الذكية لأبواب الفلل: Samsung Smart Lock وYale وPhilips وHoneywell. نساعدك في اختيار المناسب لبابك وميزانيتك مجاناً.</p></div>
+                <div class="faq-answer"><p>من أفضل الأقفال: Samsung Smart Lock وYale وPhilips وHoneywell. نساعدك في اختيار المناسب لبابك وميزانيتك مجاناً.</p></div>
             </div>
             <div class="faq-item reveal">
                 <div class="faq-question">هل يمكن تركيب قفل ذكي على الباب الحالي بدون تغييره؟ <i class="fas fa-chevron-down faq-icon"></i></div>
-                <div class="faq-answer"><p>نعم في معظم الحالات. نقوم بقياس الباب الحالي ونحدد القفل المناسب الذي يتوافق مع فتحة القفل الموجودة دون الحاجة لتغيير الباب.</p></div>
+                <div class="faq-answer"><p>نعم في معظم الحالات. نقوم بقياس الباب الحالي ونحدد القفل المناسب الذي يتوافق مع الفتحة الموجودة دون الحاجة لتغيير الباب.</p></div>
             </div>
             <div class="faq-item reveal">
                 <div class="faq-question">ما المقصود بخدمة الطوارئ لفتح الأقفال؟ <i class="fas fa-chevron-down faq-icon"></i></div>
-                <div class="faq-answer"><p>خدمة الطوارئ متاحة 24 ساعة يومياً لفتح أي قفل معطل أو منسي في شمال الرياض دون إتلاف الباب. نصلك في أسرع وقت ممكن مع ضمان الخصوصية التامة.</p></div>
+                <div class="faq-answer"><p>خدمة الطوارئ متاحة 24 ساعة يومياً لفتح أي قفل معطل أو منسي في شمال الرياض دون إتلاف الباب. نصلك في أسرع وقت ممكن.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- 11. Contact -->
+    <!-- Contact -->
     <section id="contact" class="bg-pattern">
         <div class="container">
             <div class="section-title reveal"><h2>تواصل معنا</h2><p>احصل على عرض سعر مجاني واستشارة فورية</p></div>
@@ -738,7 +923,7 @@
                         <i class="fas fa-clock"></i>
                         <div><strong>أوقات العمل</strong><div>24/7 للطوارئ وخدمة العملاء</div></div>
                     </div>
-                    <a href="https://wa.me/966542423029" class="btn btn-accent btn-animated" style="margin-top: 2rem; width: 100%; justify-content: center;">
+                    <a href="https://wa.me/966542423029" class="btn btn-accent" style="margin-top: 2rem; width: 100%; justify-content: center;">
                         <i class="fab fa-whatsapp"></i> راسلنا الآن على واتساب
                     </a>
                 </div>
@@ -760,9 +945,8 @@
                                 <option>حي الياسمين</option><option>حي النرجس</option>
                                 <option>حي الغدير</option><option>حي الصحافة</option>
                                 <option>حي الورود</option><option>حي الرمال</option>
-                                <option>حي الوادي</option><option>حي الشفا</option>
                                 <option>حي القيروان</option><option>حي حطين</option>
-                                <option>أخرى</option>
+                                <option>حي الوادي</option><option>أخرى</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -774,7 +958,8 @@
                                 <option>توريد قفل ذكي</option>
                                 <option>تركيب إنتركم ذكي</option>
                                 <option>نظام تحكم بالدخول</option>
-                                <option>فتح قفل طارئ / أبواب مغلقة</option>
+                                <option>فتح قفل طارئ</option>
+                                <option>فتح أبواب مغلقة</option>
                                 <option>تركيب دفاش وضبط وزنية</option>
                             </select>
                         </div>
@@ -782,7 +967,7 @@
                             <label>تفاصيل إضافية</label>
                             <textarea placeholder="اكتب تفاصيل طلبك هنا..." rows="4"></textarea>
                         </div>
-                        <button type="submit" class="submit-btn btn-animated">
+                        <button type="submit" class="submit-btn">
                             <i class="fab fa-whatsapp"></i> أرسل الطلب عبر واتساب
                         </button>
                     </form>
@@ -796,7 +981,7 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>أمان سمارت</h4>
-                <p>متخصصون في توريد وتركيب الأقفال الذكية والإلكترونية بشمال الرياض. فني تركيب قفل ذكي معتمد، ضمان سنتين، خدمة في نفس اليوم.</p>
+                <p>متخصصون في توريد وتركيب الأقفال الذكية والإلكترونية بشمال الرياض — فني تركيب قفل ذكي معتمد، ضمان سنتين، خدمة في نفس اليوم.</p>
             </div>
             <div class="footer-col">
                 <h4>خدماتنا</h4>
@@ -841,7 +1026,30 @@
 
     <!-- JavaScript -->
     <script>
-        // 1. Mobile Menu Toggle
+        // Top Bar Hide on Scroll + Header Sticky
+        const topBar = document.getElementById('topBar');
+        const mainHeader = document.getElementById('mainHeader');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 80) {
+                topBar.style.height = '0';
+                topBar.style.padding = '0';
+                topBar.style.overflow = 'hidden';
+                topBar.style.opacity = '0';
+                mainHeader.classList.add('scrolled');
+            } else {
+                topBar.style.height = '';
+                topBar.style.padding = '';
+                topBar.style.overflow = '';
+                topBar.style.opacity = '';
+                mainHeader.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Mobile Menu
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
         menuToggle.addEventListener('click', () => {
@@ -858,18 +1066,16 @@
             });
         });
 
-        // 2. Scroll Reveal Animation
+        // Scroll Reveal
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // 3. FAQ Accordion
+        // FAQ
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const item = question.parentElement;
@@ -879,7 +1085,7 @@
             });
         });
 
-        // 4. Contact Form to WhatsApp
+        // Contact Form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const inputs = this.querySelectorAll('input, select, textarea');
@@ -888,7 +1094,6 @@
             const area = inputs[2].value;
             const service = inputs[3].value;
             const details = inputs[4].value;
-            
             const message = `مرحباً، أرغب في طلب خدمة من موقع أمان سمارت:%0A%0Aالاسم: ${name}%0Aالجوال: ${phone}%0Aالحي: ${area}%0Aالخدمة: ${service}%0Aالتفاصيل: ${details}`;
             window.open(`https://wa.me/966542423029?text=${message}`, '_blank');
         });
